@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: hsl(35, 25%, 96%);
+      --card: #fff;
+      --border: hsl(35, 15%, 88%);
+      --text: hsl(28, 40%, 15%);
+      --text-muted: hsl(28, 15%, 45%);
+      --brand: hsl(28, 35%, 33%);
+      --brand-grad: linear-gradient(135deg, hsl(28, 35%, 42%), hsl(20, 25%, 28%));
+      --brand-glow: rgba(140, 110, 90, 0.15);
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: hsl(24, 10%, 10%);
+        --card: hsl(24, 8%, 15%);
+        --border: hsl(24, 6%, 22%);
+        --text: hsl(30, 30%, 95%);
+        --text-muted: hsl(30, 15%, 68%);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      width: 280px; margin: 0; padding: 20px; color: var(--text); background: var(--bg);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .popup-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 16px; box-shadow: 0 10px 25px -5px rgba(140, 110, 90, 0.05);
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .header {
+      display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+    .header h1 { font-size: 15px; font-weight: 700; margin: 0; letter-spacing: -0.5px; }
+    .header span { font-size: 10px; color: var(--text-muted); font-weight: 500; display: block; margin-top: 2px; }
+    
+    .desc {
+      color: var(--text-muted); font-size: 12.5px; line-height: 1.5; margin: 0;
+    }
+    .desc b { color: var(--text); }
+
+    .btn-group { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    
+    button {
+      width: 100%; border: none; border-radius: 10px; padding: 10px 14px;
+      font-weight: 600; font-size: 13px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    button svg {
+      width: 15px; height: 15px; fill: none; stroke: currentColor;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .primary {
+      background: var(--brand-grad); color: #fff;
+      box-shadow: 0 4px 12px rgba(140, 110, 90, 0.2);
+    }
+    .primary:hover {
+      box-shadow: 0 6px 16px rgba(140, 110, 90, 0.3);
+      transform: translateY(-1px);
+    }
+    .ghost {
+      background: rgba(127,127,127,0.08); color: var(--text);
+    }
+    .ghost:hover {
+      background: rgba(127,127,127,0.14);
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="popup-card">
+    <div class="header">
+      <img src="../assets/icon48.png" width="28" height="28" alt="" />
+      <div>
+        <h1>NotebookLM Plus</h1>
+        <span>增强控制中心</span>
+      </div>
+    </div>
+    <p class="desc">
+      在 NotebookLM 页面右下角点击 <b>NB+</b> 悬浮球即可使用：出题、错题筛选复习与文档导出。
+    </p>
+    <div class="btn-group">
+      <button id="open-options" class="primary">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        打开控制中心
+      </button>
+      <button id="open-nblm" class="ghost">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        访问 NotebookLM
+      </button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
